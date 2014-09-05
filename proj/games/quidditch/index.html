@@ -1,0 +1,278 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quidditch</title>
+    <script>
+function get_canvas_cursor_position(canvas, evt) {
+	var rect = canvas.getBoundingClientRect();
+	return {
+		x: evt.clientX - rect.left,
+		y: evt.clientY - rect.top
+	};
+}
+  
+var _canvas;
+var _g;
+var WID = 850;
+var HEI = 500;
+var crests = new Image();
+
+var COLOR = {
+	RED: "rgb(212,31,39)",
+	YELLOW: "rgb(245,214,10)",
+	BLUE: "rgb(3,159,199)",
+    GREEN: "rgb(37,157,72)",
+    GOLD: "rgb(212,167,70)",
+    BLACK: "rgb(70,70,70)",
+    BRONZE: "rgb(113,86,69)",
+    SILVER: "rgb(184,184,184)",
+	BG: "rgb(0,0,0)"
+};
+
+var _game = { level: 1, n: 2, bludgers: [], won: false };
+var _player = { x: 0, y: 0, lives: 3, color: COLOR.BLUE, radius: 15 };
+var _quaffle = { x: 0, y: 0, collected: false, color: COLOR.BRONZE, radius: 10 };
+var _goal = { x: 0, y: 0, color: COLOR.SILVER, radius: 20 };
+var _snitch = { x: 0, y: 0, vx: 0, vy: 0, color: COLOR.GOLD, radius: 5};
+    
+window.onload = function() {
+	_canvas = document.getElementById("game");
+	_g = document.getElementById("game").getContext("2d");
+    show_teams();
+}
+
+function show_teams() {
+    _g.fillStyle = COLOR.BG;
+    _g.fillRect(0,0,WID,HEI);
+    
+    _g.fillStyle = COLOR.SILVER;
+    _g.font = "20px arial";
+    _g.textAlign = "center";
+    _g.fillText("Choose your team:",WID/2,HEI/2-100);
+    crests.src = 'crests-horiz.png';
+    crests.onload = function() { _g.drawImage(crests, 25, HEI/2-75); };
+    _canvas.addEventListener('mousedown',pick_team);
+}
+
+function pick_team(e) {
+    var mouse_coords = get_canvas_cursor_position(_canvas, e);
+    console.log("x: " + mouse_coords.x + ", y: " + mouse_coords.y + ", " + ((HEI/2)-75 + 222));
+    if (mouse_coords.x > 25 && mouse_coords.x <= 825 &&
+            mouse_coords.y > ((HEI/2)-75) && mouse_coords.y <= ((HEI/2)-75+222)) {
+        var house = Math.floor(mouse_coords.x / 200);
+        if (house == 0)
+            _player.color = COLOR.RED;
+        else if (house == 1)
+            _player.color = COLOR.YELLOW;
+        else if (house == 2)
+            _player.color = COLOR.BLUE;
+        else
+            _player.color = COLOR.GREEN;
+        start_game();
+    }    
+}
+
+function start_game() {
+    _canvas.removeEventListener('mousedown',pick_team);
+    _canvas.addEventListener('mousedown',mouse_down);
+	_canvas.addEventListener('mousemove',mouse_move);
+    _snitch.x = Math.random() * 800;
+    _snitch.y = Math.random() * 450;
+    _snitch.vx = Math.random();
+    _snitch.vy = Math.random();
+	set_level(1);
+    setInterval(update, 40);
+}
+
+function distance(obj1, obj2) {
+    return Math.sqrt(Math.pow(obj1.x - obj2.x, 2) + Math.pow(obj1.y - obj2.y, 2));
+}
+
+function collision(obj) {
+    var dist = (_player.radius + obj.radius)/2;
+    var collide = distance(_player, obj) < dist;
+    return (collide) ? true : false;
+}
+
+function draw_obj(obj, fill) {
+    _g.beginPath();
+    _g.arc(obj.x,obj.y,obj.radius,0,Math.PI*2);
+	_g.closePath();
+    if (fill){
+        _g.fillStyle = obj.color;
+        _g.fill();
+    } else {
+        _g.strokeStyle = obj.color;
+        _g.lineWidth = 3;
+        _g.stroke();
+    }
+}
+
+function set_level(level) {
+    _game.level = level;
+    _game.n = 2*level;
+    _quaffle.x = Math.random() * 800;
+    _quaffle.y = Math.random() * 450;
+    _goal.x = Math.random() * 800;
+    _goal.y = Math.random() * 450;
+    if (level == 1) {
+        for (var i = 0; i < Math.min(_game.n, _game.bludgers.length); i++) {
+            var bludger = _game.bludgers[i];
+            bludger.x = Math.random() * 800;
+            bludger.y = Math.random() * 450;
+        }
+    }
+    for (var i = _game.bludgers.length; i < _game.n; i++) {
+        _game.bludgers.push(make_bludger(Math.random()*800,Math.random()*450));
+    }
+}
+
+function mouse_down(e){
+    if (_player.lives <= 0) {
+        set_level(1);
+        _player.lives = 3;
+        _game.won = false;
+        _quaffle.collected = false;
+        _snitch.caught = false;
+    }
+}
+
+function mouse_up(e) {var mouse_pos = get_canvas_cursor_position(_canvas,e);}
+
+function mouse_move(e) {
+    var mouse_pos = get_canvas_cursor_position(_canvas,e);
+    _player.x = mouse_pos.x;
+    _player.y = mouse_pos.y;
+}
+function key_down(e) { console.log(e.keyCode) }
+function key_up(e) {}
+
+function make_bludger(x,y) {
+	var rtv = {};
+	rtv.x = x;
+	rtv.y = y;
+	rtv.vx = Math.random()*5-2.5;
+	rtv.vy = Math.random()*20-10;
+    rtv.color = COLOR.BLACK;
+    rtv.radius = 7;
+	return rtv;
+}
+
+function get_gravity_center() {
+	return {x:_player.x,y:_player.y};
+}
+
+function distance_to_gravity_center(x,y) {
+	var grav_center = get_gravity_center();
+	return Math.sqrt(Math.pow(grav_center.x-x,2)+Math.pow(grav_center.y-y,2));
+}
+
+function update() {
+	_g.clearRect(0,0,WID,HEI);
+    
+    _g.fillStyle = COLOR.BG;
+	_g.fillRect(0,0,WID,HEI);
+    
+    if (_player.lives > 0) {
+        if (collision(_quaffle))
+            _quaffle.collected = true;
+        if (collision(_goal) && _quaffle.collected )
+            _game.won = true;
+    }
+     
+    if (_game.won) {
+        set_level(_game.level + 1);
+        _game.won = false;
+        _quaffle.collected = false;
+        _snitch.caught = false;
+    }
+    
+    _g.fillStyle = COLOR.SILVER;
+    _g.textAlign = 'start';
+    _g.fillText("Level " + _game.level, 30, 30);
+    _g.fillText(_player.lives + " lives left.", 30, 60);
+	
+    draw_obj(_goal,false);    
+    if (_quaffle.collected) {
+        _quaffle.x = _player.x - 10;
+        _quaffle.y = _player.y + 10;
+    }
+    if (_player.lives > 0)
+        draw_obj(_quaffle, true);    
+    
+    /*
+    if (collision(_snitch))
+        _snitch.caught = true;
+    
+    if (distance(_player, _snitch) < 100) {
+        var ax = _snitch.x - _player.x;
+        var ay = _snitch.y - _player.y;
+        _snitch.vx += ax / 30;
+        _snitch.vy += ay / 30;
+    }
+    
+    if (_snitch.x < 25)
+        _snitch.vx = Math.abs(_snitch.vx);
+    else if (_snitch.x > 825)
+        _snitch.vx = -Math.abs(_snitch.vx);
+    if (_snitch.y < 25)
+        _snitch.vy = Math.abs(_snitch.vy);
+    else if (_snitch.y > 475)
+        _snitch.vy = -Math.abs(_snitch.vy);
+    
+    if (Math.abs(_snitch.vx) > 5) {
+        if (_snitch.vx > 0)
+            _snitch.vx -= 0.1;
+        else
+            _snitch.vx += 0.1;
+    }
+    if (Math.abs(_snitch.vy) > 5) {
+        if (_snitch.vy > 0)
+            _snitch.vy -= 0.1;
+        else
+            _snitch.vy += 0.1;
+    }
+        
+    _snitch.x += _snitch.vx;
+    _snitch.y += _snitch.vy;
+    
+    if (!_snitch.caught)
+        draw_obj(_snitch, true);
+    */
+    
+    for(var i = 0; i < _game.n; i++) {
+		var bludger = _game.bludgers[i];
+        if (collision(bludger))
+            if (_player.lives > 0)
+                _player.lives -= 1;
+		
+		bludger.x += bludger.vx;
+		bludger.y += bludger.vy;
+		
+		var intensity = 1/distance_to_gravity_center(bludger.x,bludger.y) * 70;
+		var delta = {x:get_gravity_center().x-bludger.x, y:get_gravity_center().y-bludger.y};
+		var delta_len = Math.sqrt(Math.pow(delta.x,2)+Math.pow(delta.y,2));
+		var normalized_delta = {x:delta.x/delta_len,y:delta.y/delta_len};
+		bludger.vx += normalized_delta.x*intensity;
+		bludger.vy += normalized_delta.y*intensity;
+		
+		draw_obj(bludger, true);
+	}
+     
+    if (_player.lives <= 0) {
+        _g.textAlign = 'center';
+        _g.fillStyle = COLOR.SILVER;
+        _g.fillText("You lost. =(",450,250);
+        _g.fillText("(Click to start over)",450,280);
+    } else {
+        draw_obj(_player,true);
+    }
+}
+  
+    </script>
+</head>
+<body>
+    <canvas id="game"  width="850px" height="500px" style="margin:auto;display:block;"></canvas>
+</body>
+</html>

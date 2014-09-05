@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>HTML5 Canvas</title>
+    <style type="text/css">
+      body {
+        background-color: black;
+      }
+      #main {
+        margin: auto;
+        width: 1000px;
+      }
+      #game {
+        /*width: 850px;
+        height: 500px;*/
+        color: white;
+        /*background-color: white;*/
+        display: inline-block;
+        border: 3px inset gray;
+        float: left;
+      }
+      #sidepanel {
+        height: 490px;
+        width: 140px;
+        display: inline-block;
+        border: 3px inset gray;
+        color: white;
+        padding: 5px;
+      }
+      input {
+        width: 90px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="main">
+      <canvas id="game" width="800" height="500"></canvas>
+      <div id="sidepanel">
+        <label for="gravity">Gravity:</label><input id="gravity" type="number"/>
+      </div>
+    </div>
+    <script type="text/javascript">
+      function get_canvas_cursor_position(canvas, evt) {
+        var rect = canvas.getBoundingClientRect();
+        return {
+          x: evt.clientX - rect.left,
+          y: evt.clientY - rect.top
+        };
+      }
+        
+      var _canvas;
+      var _g;
+      var WID = 800;
+      var HEI = 500;
+      var _gameobjs = [];
+      var cx = WID/2;
+      var cy = HEI/2;
+      var gravity_strength = 1;
+
+      var COLOR = {
+        RED: "rgb(255,0,0)",
+        GREEN: "rgb(0,255,0)",
+        BLUE: "rgb(0,0,255)",
+        BLACK: "rgb(0,0,0)",
+        WHITE: "rgb(255,255,255)"
+      };
+
+      var KEY_CODE = {
+        LEFT: 37,
+        UP: 38,
+        RIGHT: 39,
+        DOWN: 40
+      };
+          
+      window.onload = function() {
+        _canvas = document.getElementById("game");
+        _g = document.getElementById("game").getContext("2d");
+          
+        window.addEventListener('keydown', key_down);
+        window.addEventListener('keyup',key_up);
+        _canvas.addEventListener('mousedown',mouse_down);
+        _canvas.addEventListener('mouseup',mouse_up);
+        _canvas.addEventListener('mousemove',mouse_move);
+        
+        var grav_spinner = document.getElementById('gravity');
+        grav_spinner.value = gravity_strength;
+        grav_spinner.addEventListener('change', spinner);
+
+        setInterval(update, 40);
+        
+        //_gameobjs.push(make_object(150,50));
+      }
+
+      function spinner(e){
+        //console.log("Spinner changed");
+        gravity_strength = document.getElementById('gravity').value;
+        //console.log(gravity_strength);
+      }
+
+      function mouse_down(e){
+        var mouse_pos = get_canvas_cursor_position(_canvas,e);
+        _gameobjs.push(make_object(mouse_pos.x,mouse_pos.y));
+      }
+      function mouse_up(e) {var mouse_pos = get_canvas_cursor_position(_canvas,e);}
+      function mouse_move(e) { var mouse_pos = get_canvas_cursor_position(_canvas,e);}
+      function key_down(e) { 
+        //console.log(e.keyCode);
+        switch(e.keyCode) {
+          case KEY_CODE.LEFT:
+            cx-=4;
+            break;
+          case KEY_CODE.RIGHT:
+            cx+=4;
+            break;
+          case KEY_CODE.UP:
+            cy-=4;
+            break;
+          case KEY_CODE.DOWN:
+            cy+=4;
+            break;
+          default:
+            break;
+        }
+      }
+      function key_up(e) {}
+
+      function make_object(x,y) {
+        var rtv = {};
+        rtv.x = x;
+        rtv.y = y;
+        rtv.vx = 0;//Math.random()*5-2.5;
+        rtv.vy = 0;//Math.random()*20-10;
+        rtv.r = Math.round(Math.random()*6)+1;
+        rtv.m = rtv.r*rtv.r/50;
+        rtv.tail = [];
+        return rtv;
+      }
+
+      function get_gravity_center() {
+        return {x:cx,y:cy};
+      }
+
+      function distance_to_gravity_center(x,y) {
+        var grav_center = get_gravity_center();
+        return Math.sqrt(Math.pow(grav_center.x-x,2)+Math.pow(grav_center.y-y,2));
+      }
+
+      function delta_distance(obj1, obj2) {
+        return Math.sqrt(Math.pow(obj1.x-obj2.x,2)+Math.pow(obj1.y-obj2.y,2));
+      }
+
+      function update() {
+        _g.clearRect(0,0,WID,HEI);
+        
+        _g.fillStyle = COLOR.BLACK;
+        _g.fillRect(0,0,WID,HEI);
+        
+        // _g.fillStyle = COLOR.GREEN;
+        // _g.beginPath();
+        // //_g.arc(WID*0.5,HEI*0.5,20,0,Math.PI*2);
+        // _g.arc(cx,cy,20,0,Math.PI*2);
+        // _g.closePath();
+        // _g.fill();
+        var tail_length = 30;
+        var div = 0.5/tail_length;
+
+        for(var i_obj = 0; i_obj < _gameobjs.length; i_obj++) {
+          var itr_obj = _gameobjs[i_obj];
+          var positions = itr_obj.tail;
+          positions.push({x:itr_obj.x, y:itr_obj.y});
+          if (positions.length > tail_length) {
+            positions.shift();
+          }
+          var cur = 0;
+          for(var t = 0; t < positions.length; t++) {
+            _g.fillStyle = "rgba(200,122,122," + (Math.round(cur * 10) / 10) + ")";
+            pos = positions[t];
+            _g.beginPath();
+            _g.arc(pos.x,pos.y,itr_obj.r,0,Math.PI*2);
+            _g.closePath();
+            _g.fill();
+            cur += div;
+          }
+        }
+        
+        for(var i_obj = 0; i_obj < _gameobjs.length; i_obj++) {
+          var itr_obj = _gameobjs[i_obj];
+          
+          itr_obj.x += itr_obj.vx;
+          itr_obj.y += itr_obj.vy;
+          
+          // var intensity = 1/distance_to_gravity_center(itr_obj.x,itr_obj.y) * gravity_strength;
+          // var delta = {x:get_gravity_center().x-itr_obj.x, y:get_gravity_center().y-itr_obj.y};
+          // var delta_len = Math.sqrt(Math.pow(delta.x,2)+Math.pow(delta.y,2));
+          // var normalized_delta = {x:delta.x/delta_len,y:delta.y/delta_len};
+          // itr_obj.vx += normalized_delta.x*intensity;
+          // itr_obj.vy += normalized_delta.y*intensity;
+
+          for(var i_obj_2 = 0; i_obj_2 < _gameobjs.length; i_obj_2++) {
+            if (i_obj_2 != i_obj) {
+              var itr_obj_2 = _gameobjs[i_obj_2];
+
+              //var intensity = 1/distance_to_gravity_center(itr_obj.x,itr_obj.y) * gravity_strength;
+              //var intensity = 1/delta_distance(itr_obj, itr_obj_2) * gravity_strength * itr_obj.m * itr_obj_2.m;
+              var intensity = 1/delta_distance(itr_obj, itr_obj_2) * gravity_strength * itr_obj_2.m;
+              //var delta = {x:get_gravity_center().x-itr_obj.x, y:get_gravity_center().y-itr_obj.y};
+              var delta = {x:itr_obj_2.x-itr_obj.x, y:itr_obj_2.y-itr_obj.y};
+              var delta_len = Math.sqrt(Math.pow(delta.x,2)+Math.pow(delta.y,2));
+              var normalized_delta = {x:delta.x/delta_len,y:delta.y/delta_len};
+              itr_obj.vx += normalized_delta.x*intensity;
+              itr_obj.vy += normalized_delta.y*intensity;      
+            }
+          }
+          
+          _g.fillStyle = COLOR.RED;
+          _g.beginPath();
+          _g.arc(itr_obj.x,itr_obj.y,itr_obj.r,0,Math.PI*2);
+          _g.closePath();
+          _g.fill();
+        }
+      }
+    </script>
+  </body>
+</html>

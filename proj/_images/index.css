@@ -1,0 +1,306 @@
+textarea:hover, 
+input:hover, 
+textarea:active, 
+input:active, 
+textarea:focus, 
+input:focus,
+a:focus {
+    outline:0px !important;
+    -webkit-appearance: none; /* Stops FireFox from highlighting links with a dotted border */
+}
+
+a, a:hover {
+    color: #BBBBBB;
+}
+
+a:hover {
+    color: #888888;
+    text-decoration: none;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-image: url("http://gamedev.cs.washington.edu/images/stardust.png");
+    background-repeat: repeat;
+    background-attachment: fixed;
+    color: #FAFAFA;
+    padding-top: 85px; /* Make sure the body content is not covered by nav*/
+}
+
+.darkbutton, .darkbutton:focus {
+    color: #FAFAFA;
+    background-color: #333333;
+    border: 1px solid white;
+}
+
+.darkbutton:hover {
+    color: gray;
+}
+
+.shadow {
+    box-shadow: 5px 5px 20px rgba(25, 25, 25, .8);
+}
+
+#myCarousel .nav a small {
+    display: block;
+}
+
+#myCarousel .nav a {
+    color: #FAFAFA;
+	background: #333333;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    border-bottom: 2px;
+    border-style: solid;
+    border-color: #333333;
+}
+
+#myCarousel .nav a:hover{
+    color: #FAFAFA;
+	background: #333333;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    border-bottom: 2px;
+    border-style: solid;
+    border-color: gray;
+}
+
+#myCarousel li.active a {
+    color: #FAFAFA;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    border-bottom: 2px;
+    border-style: solid;
+    border-color: white;
+}
+
+#myCarousel .nav a {
+    border-radius:0px;
+}
+
+#info, #calender, #contact, #projects, #footer {
+    margin-top: 50px;
+    background-color: #333333;
+    box-shadow: 5px 5px 20px rgba(25, 25, 25, .8);
+}
+
+#footer {
+    padding: 10px;
+    margin-bottom: 25px;
+}
+
+/* Begin Post Styles */
+
+.post
+{
+    background-color: #333333;
+    overflow: hidden;
+    border: 1px solid #FFFFFF;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+.post .content
+{
+    padding: 0px 10px 10px 10px;
+}
+.post .author
+{
+    font-size: 11px;
+    padding: 5px 5px 5px;
+}
+.post .post-img-content
+{
+    height: 150px;
+    position: relative;
+}
+.post .post-img-content img
+{
+    position: absolute;
+}
+.post .post-title
+{
+    display: table-cell;
+    vertical-align: bottom;
+    z-index: 2;
+    position: relative;
+}
+.post .post-title b
+{
+    background-color: rgba(51, 51, 51, 0.58);
+    display: inline-block;
+    margin-bottom: 5px;
+    color: #FFF;
+    padding: 10px 15px;
+    margin-top: 5px;
+}
+
+/* Begin Timeline Styles */
+
+.timeline {
+    list-style: none;
+    padding: 20px 0 20px;
+    position: relative;
+}
+
+.timeline:before {
+    top: 0;
+    bottom: 0;
+    position: absolute;
+    content: " ";
+    width: 3px;
+    background-color: #eeeeee;
+    left: 50%;
+    margin-left: -1.5px;
+}
+
+.timeline > li {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.timeline > li:before,
+.timeline > li:after {
+    content: " ";
+    display: table;
+}
+
+.timeline > li:after {
+    clear: both;
+}
+
+.timeline > li:before,
+.timeline > li:after {
+    content: " ";
+    display: table;
+}
+
+.timeline > li:after {
+    clear: both;
+}
+
+.timeline > li > .timeline-panel {
+    width: 46%;
+    float: left;
+    background-color: #333333;
+    border: 1px solid #d4d4d4;
+    border-radius: 2px;
+    padding: 20px;
+    position: relative;
+    -webkit-box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
+}
+
+.timeline > li > .timeline-panel:before {
+    position: absolute;
+    top: 26px;
+    right: -15px;
+    display: inline-block;
+    border-top: 15px solid transparent;
+    border-left: 15px solid #ccc;
+    border-right: 0 solid #ccc;
+    border-bottom: 15px solid transparent;
+    content: " ";
+}
+
+.timeline > li > .timeline-panel:after {
+    position: absolute;
+    top: 27px;
+    right: -14px;
+    display: inline-block;
+    border-top: 14px solid transparent;
+    border-left: 14px solid #fff;
+    border-right: 0 solid #fff;
+    border-bottom: 14px solid transparent;
+    content: " ";
+}
+
+.timeline > li > .timeline-badge {
+    color: #fff;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    font-size: 1.4em;
+    text-align: center;
+    position: absolute;
+    top: 16px;
+    left: 50%;
+    margin-left: -25px;
+    background-color: #444444;
+    border: 1px solid white;
+    z-index: 100;
+    border-top-right-radius: 50%;
+    border-top-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+    border-bottom-left-radius: 50%;
+}
+
+.timeline > li.timeline-inverted > .timeline-panel {
+    float: right;
+}
+
+.timeline > li.timeline-inverted > .timeline-panel:before {
+    border-left-width: 0;
+    border-right-width: 15px;
+    left: -15px;
+    right: auto;
+}
+
+.timeline > li.timeline-inverted > .timeline-panel:after {
+    border-left-width: 0;
+    border-right-width: 14px;
+    left: -14px;
+    right: auto;
+}
+
+.timeline-title {
+    margin-top: 0;
+    color: inherit;
+}
+
+.timeline-body > p,
+.timeline-body > ul {
+    margin-bottom: 0;
+}
+
+.timeline-body > p + p {
+    margin-top: 5px;
+}
+
+@media (max-width: 767px) {
+ul.timeline:before {
+    left: 40px;
+}
+
+ul.timeline > li > .timeline-panel {
+    width: calc(100% - 90px);
+    width: -moz-calc(100% - 90px);
+    width: -webkit-calc(100% - 90px);
+}
+
+ul.timeline > li > .timeline-badge {
+    left: 15px;
+    margin-left: 0;
+    top: 16px;
+}
+
+ul.timeline > li > .timeline-panel {
+    float: right;
+}
+
+ul.timeline > li > .timeline-panel:before {
+    border-left-width: 0;
+    border-right-width: 15px;
+    left: -15px;
+    right: auto;
+}
+
+ul.timeline > li > .timeline-panel:after {
+    border-left-width: 0;
+    border-right-width: 14px;
+    left: -14px;
+    right: auto;
+}
+}
