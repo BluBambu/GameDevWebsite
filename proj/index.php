@@ -87,28 +87,29 @@ function proj_end() {
     
     <body>
         <nav class="navbar navbar-fixed-top shadow" role="navigation" id="nav">
-          <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-              <a class="navbar-brand" href="#myCarousel"><b>Game</b> Dev Club</a>
-            </div>
+            <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#myCarousel"><b>Game</b> Dev Club</a>
+                </div>
 
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-              <ul class="nav navbar-nav navbar-right">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#info">Info</a></li>
-                <li><a href="#calender">Calendar</a></li>
-                <li><a href="#projects">Projects</a></li>
-              </ul>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#info">Info</a></li>
+                        <li><a href="#calender">Calendar</a></li>
+                        <li><a href="#projects">Projects</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
             </div>
-          </div>
+            </div>
         </nav>
     
         <div class="container" id="home">
@@ -157,7 +158,7 @@ function proj_end() {
                     <li data-target="#myCarousel" data-slide-to="0" class="active">
                         <a href="#">Welcome<small>Join Our FB Group!</small></a></li>
                     <li data-target="#myCarousel" data-slide-to="1">
-                        <a href="#">Come To A Meeting!<small>We're working out where & when soon!</small></a></li>
+                        <a href="#">Come To A Meeting!<small>We'll work out where & when soon!</small></a></li>
                     <li data-target="#myCarousel" data-slide-to="2">
                         <a href="#">Our Projects<small>Take A Look At Our Past Prjects</small></a></li>
                 </ul>
@@ -179,17 +180,17 @@ function proj_end() {
                         </p>
                     </div>
                     <div class="col-xs-6 col-sm-6 col-md-6">
-                        <h3>Join The Facebook Group!</h3>
+                        <h3>What're We Doing This Fall?</h3>
                         <p>
-                            <a href="https://www.facebook.com/groups/uwgamedevc/">
-                                <img src="_images/fb_logo.png" width="35px" />
-                                Join Our Facebook Group!
-                                <img src="_images/fb_logo.png" width="35px" />
-                            </a>
+                            This quarter we'll be learning how to use the Unity Game Engine by making a space shoot'em up game.
+                            In this game, you'll control a space shape that'll shoot at enemy shapes which split up into
+                            more primitive enemy shapes upon death. We'll be tackling a specific aspect of this game
+                            at each meeting.
                         </p>
                     </div>
                 </div>
                 <div class="row">
+
                     <div class="col-xs-6 col-sm-6 col-md-6">
                         <h3>When And Where?</h3>
                         <p>
@@ -197,10 +198,13 @@ function proj_end() {
                         </p>
                     </div>
                     <div class="col-xs-6 col-sm-6 col-md-6">
-                        <h3>Our Advisers</h3>
+                        <h3>Join The Facebook Group!</h3>
                         <p>
-                            <a href="mailto:scooper@cs.washington.edu">Seth</a> (Official advisor)<br/>
-                            <a href="mailto:melody@cs.washington.edu">Melody</a> (Unofficial advisor)
+                            <a href="https://www.facebook.com/groups/uwgamedevc/">
+                                <img src="_images/fb_logo.png" width="35px" />
+                                Join our Facebook group to stay up to date!
+                                <img src="_images/fb_logo.png" width="35px" />
+                            </a>
                         </p>
                     </div>
                 </div>
@@ -213,19 +217,63 @@ function proj_end() {
             <hr />
             <ul class="timeline">
                 <li>
-                    <div class="timeline-badge primary"><a><i class="glyphicon glyphicon-record" rel="tooltip" title="11 hours ago via Twitter" id=""></i></a></div>
                     <div class="timeline-panel">
                         <div class="timeline-body">
-                            <p>wefswef</p>
+                            <h3>Introduction - Date: TBD</h3>
+                            <p>At our first meeting this fall, we'll be introducing the game that we'll be working on for
+                            the entire quarter. We'll also be covering some basics about Unity so we can actually start on
+                            our project next meeting.</p>
                         </div>
                     </div>
                 </li>
 
                 <li  class="timeline-inverted">
-                    <div class="timeline-badge primary"><a><i class="glyphicon glyphicon-record" rel="tooltip" title="11 hours ago via Twitter" id=""></i></a></div>
                     <div class="timeline-panel">
                         <div class="timeline-body">
-                            <p>wefswef</p>
+                            <h3>Making Our Ship - Date: TBD</h3>
+                            <p>At our second meeting, we'll be learning how to make a 2D player controllable space ship.
+                            This ship will be able to move according to the WASD keys, automatically face the direction
+                            of the mouse, and have semi-realistic space physics</p>
+                        </div>
+                    </div>
+                </li>
+
+                <li  class="timeline">
+                    <div class="timeline-panel">
+                        <div class="timeline-body">
+                            <h3>Making Our Enemies - Date: TBD</h3>
+                            <p>At our third meeting, we'll be adding basic enemies to our game. These basic enemies
+                            will be pretty simple in that they won't move or damage our player (yet!), but can take damage and die.
+                            We'll also be adding some weapons to our player ship as well.</p>
+                        </div>
+                    </div>
+                </li>
+
+                <li  class="timeline-inverted">
+                    <div class="timeline-panel">
+                        <div class="timeline-body">
+                            <h3>Making Our Enemies Better - Date: TBD</h3>
+                            <p>At our fourth meeting, we'll be adding onto the basic enemies from last meeting. This
+                            involves adding weapons, movement, and its splitting shape behavior.</p>
+                        </div>
+                    </div>
+                </li>
+
+                <li  class="timeline">
+                    <div class="timeline-panel">
+                        <div class="timeline-body">
+                            <h3>Adding a UI - Date: TBD</h3>
+                            <p>At our fifth meeting, we'll be adding in a basic user interface to our game. This includes
+                            displaying the player score on the screen, an exit menu, and a basic start screen.</p>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="timeline-inverted">
+                    <div class="timeline-panel">
+                        <div class="timeline-body">
+                            <h3>More Stuff Coming Soon!</h3>
+                            <p>Please note that everything is tentative at this point!</p>
                         </div>
                     </div>
                 </li>
@@ -234,13 +282,13 @@ function proj_end() {
             </ul>
             <hr />
         </div>
-    
+
         <div class="container" id="projects">
             <h2 class="text-center">Member Projects</h2>
             <hr />
                 <div class="row">
                 <?php proj_start()?>
-                        <a href="http://laserswords.net/ghost/"><img src="_images/projects/ghostgirlkitten.png" class="img-responsive" alt="Window Cleaner"/></a>
+                        <a href="http://laserswords.net/ghost/"><img src="_images/projects/ghostgirlkitten.png" class="img-responsive" alt="Ghost Girl"/></a>
                         <span class="post-title"><b>Ghost Girl + Kitten</b></span>
                     </div>
                     <div class="content">
@@ -250,7 +298,7 @@ function proj_end() {
                 <?php proj_end()?>
 
                 <?php proj_start()?>
-                        <a href="http://gamedev.cs.washington.edu/games/MoreEpicPon.swf"><img src="_images/projects/moreepicpon.png" class="img-responsive" alt="Window Cleaner"/></a>
+                        <a href="http://gamedev.cs.washington.edu/games/MoreEpicPon.swf"><img src="_images/projects/moreepicpon.png" class="img-responsive" alt="MoreEpicPon"/></a>
                         <span class="post-title"><b>MoreEpicPon</b></span>
                     </div>
                     <div class="content">
@@ -260,7 +308,7 @@ function proj_end() {
                 <?php proj_end()?>
 
                 <?php proj_start()?>
-                        <a href="http://spotcos.com/penguin/"><img src="_images/projects/peng_simulator.png" class="img-responsive" alt="Window Cleaner"/></a>
+                        <a href="http://spotcos.com/penguin/"><img src="_images/projects/peng_simulator.png" class="img-responsive" alt="Penguin Simulator"/></a>
                         <span class="post-title"><b>Maniac Pengmaku!!</b></span>
                     </div>
                     <div class="content">
@@ -270,7 +318,7 @@ function proj_end() {
                 <?php proj_end()?>
 
                 <?php proj_start()?>
-                        <a href="http://donovanwu.github.io/showcase/FishingOnTheIce.swf"><img src="_images/projects/fishing_on_the_ice.png" class="img-responsive" alt="Window Cleaner"/></a>
+                        <a href="http://donovanwu.github.io/showcase/FishingOnTheIce.swf"><img src="_images/projects/fishing_on_the_ice.png" class="img-responsive" alt="Fishing On The Ice"/></a>
                         <span class="post-title"><b>Fishing On The Ice</b></span>
                     </div>
                     <div class="content">
@@ -278,7 +326,7 @@ function proj_end() {
                             By <b>Wenrui</b>
                         </div>
                 <?php proj_end()?>
-	            
+
 
 	            <?php proj_start()?>
 	                    <a href="http://johngs.itch.io/invasion"><img src="_images/projects/invasion.png" class="img-responsive" alt="Invasion"/></a>
@@ -286,7 +334,7 @@ function proj_end() {
 	                </div>
 	                <div class="content">
 	                    <div class="author">
-	                        By <b>Jonathan, Justin, Taylor, and Thomas</b>
+	                        By <b>John, Justin, Taylor, and Thomas</b>
 	                    </div>
 	            <?php proj_end()?>
 
@@ -317,7 +365,7 @@ function proj_end() {
 	                </div>
 	                <div class="content">
 	                    <div class="author">
-	                        By <b>Connor</b> 
+	                        By <b>Connor</b>
 	                    </div>
 	            <?php proj_end()?>
 
@@ -328,7 +376,7 @@ function proj_end() {
 	                </div>
 	                <div class="content">
 	                    <div class="author">
-	                        By <b>Wil</b> 
+	                        By <b>Wil</b>
 	                    </div>
 	            <?php proj_end()?>
 
@@ -338,7 +386,7 @@ function proj_end() {
 	                </div>
 	                <div class="content">
 	                    <div class="author">
-	                        By <b>Thomas</b> 
+	                        By <b>Thomas</b>
 	                    </div>
 	            <?php proj_end()?>
 
@@ -348,7 +396,7 @@ function proj_end() {
 	                </div>
 	                <div class="content">
 	                    <div class="author">
-	                        By <b>Wenrui</b> 
+	                        By <b>Wenrui</b>
 	                    </div>
 	            <?php proj_end()?>
 
@@ -358,7 +406,7 @@ function proj_end() {
 	                </div>
 	                <div class="content">
 	                    <div class="author">
-	                        By <b>Brandon</b> 
+	                        By <b>Brandon</b>
 	                    </div>
 	            <?php proj_end()?>
 
@@ -368,11 +416,11 @@ function proj_end() {
 	                </div>
 	                <div class="content">
 	                    <div class="author">
-	                        By <b>David</b> 
+	                        By <b>David</b>
 	                    </div>
 	            <?php proj_end()?>
                 <?php proj_start()?>
-                        <a href="http://yoonj4.itch.io/dancing-robot-party/"><img src="_images/projects/dancing_robot_party.png" class="img-responsive" alt="Window Cleaner"/></a>
+                        <a href="http://yoonj4.itch.io/dancing-robot-party/"><img src="_images/projects/dancing_robot_party.png" class="img-responsive" alt="Dancing Robot Party"/></a>
                         <span class="post-title"><b>Robot Dancing Party</b></span>
                     </div>
                     <div class="content">
@@ -382,7 +430,7 @@ function proj_end() {
                 <?php proj_end()?>
 
 	            <?php proj_start()?>
-			            <a href="http://spotco.itch.io/window-cleaner"><img src="http://spotcos.com/content/projectsimg/banner/windowcleaner_banner.png" class="img-responsive" alt="Window Cleaner"/></a>
+			            <a href="http://spotco.itch.io/window-cleaner"><img src="_images/projects/window_cleaner.png" class="img-responsive" alt="Window Cleaner"/></a>
 			            <span class="post-title"><b>Window Cleaner: A Tale of Two Gangs</b></span>
 		            </div>
 		            <div class="content">
@@ -390,7 +438,7 @@ function proj_end() {
 		                    By <b>Shiny, Donovan, Ciera, Yasu, Joshua</b>
 		                </div>
 	            <?php proj_end()?>
-            
+
 	            <?php proj_start()?>
 	                    <a href="games/FlappyObamas.swf"><img src="_images/projects/flappyobama.png" class="img-responsive" alt="Flappy Duck"/></a>
 	                    <span class="post-title"><b>Flappy Obamas</b></span>
@@ -407,7 +455,7 @@ function proj_end() {
 	                </div>
 	                <div class="content">
 	                    <div class="author">
-	                        By <b>Shiny</b> 
+	                        By <b>Shiny</b>
 	                    </div>
 	            <?php proj_end()?>
 
@@ -417,10 +465,34 @@ function proj_end() {
 	                </div>
 	                <div class="content">
 	                    <div class="author">
-	                        By <b>You!</b> 
+	                        By <b>You!</b>
 	                    </div>
 	            <?php proj_end()?>
                 </div>
+        </div>
+
+        <div class="container text-center" id="contact">
+            <h2>Contact</h2>
+            <div class="text-center">
+                <hr />
+                <div class="row">
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <h3>Question or Inquiries?</h3>
+                        <p>
+                            Send an email to <a href="mailto:wenjieshi1@uw.edu">Wenjie</a>!
+                        </p>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <h3>Our Advisors</h3>
+                        <p>
+                            <a href="mailto:mburns@cs.washington.edu">Matthew</a> (Official advisor)
+                            <br/>
+                            <a href="mailto:melody@cs.washington.edu">Melody</a> (Unofficial advisor)
+                        </p>
+                    </div>
+                </div>
+                <hr />
+            </div>
         </div>
         
         <div class="container text-center" id="footer">
