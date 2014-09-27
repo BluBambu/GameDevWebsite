@@ -158,7 +158,7 @@ function proj_end() {
                     <li data-target="#myCarousel" data-slide-to="0" class="active">
                         <a href="#">Welcome<small>Join Our FB Group!</small></a></li>
                     <li data-target="#myCarousel" data-slide-to="1">
-                        <a href="#">Come To A Meeting!<small>We'll work out where & when soon!</small></a></li>
+                        <a href="#">Come To A Meeting!<small>Wednesdays 4:30-5:20 at CSE 203</small></a></li>
                     <li data-target="#myCarousel" data-slide-to="2">
                         <a href="#">Our Projects<small>Take A Look At Our Past Prjects</small></a></li>
                 </ul>
@@ -194,7 +194,7 @@ function proj_end() {
                     <div class="col-xs-6 col-sm-6 col-md-6">
                         <h3>When And Where?</h3>
                         <p>
-                            We're still working out the details, check back soon!
+                            Every Wednesday from 4:30 to 5:20 PM at CSE 203
                         </p>
                     </div>
                     <div class="col-xs-6 col-sm-6 col-md-6">
@@ -219,10 +219,13 @@ function proj_end() {
                 <li>
                     <div class="timeline-panel">
                         <div class="timeline-body">
-                            <h3>Introduction - Date: TBD</h3>
+                            <h3>Introduction - Date: 10/1</h3>
                             <p>At our first meeting this fall, we'll be introducing the game that we'll be working on for
                             the entire quarter. We'll also be covering some basics about Unity so we can actually start on
                             our project next meeting.</p>
+                            <hr>
+                            <p>Download <a href="http://unity3d.com/unity/beta/4.6">Unity</a>!</p>
+
                         </div>
                     </div>
                 </li>
@@ -230,7 +233,7 @@ function proj_end() {
                 <li  class="timeline-inverted">
                     <div class="timeline-panel">
                         <div class="timeline-body">
-                            <h3>Making Our Ship - Date: TBD</h3>
+                            <h3>Making Our Ship - Date: 10/8</h3>
                             <p>At our second meeting, we'll be learning how to make a 2D player controllable space ship.
                             This ship will be able to move according to the WASD keys, automatically face the direction
                             of the mouse, and have semi-realistic space physics</p>
@@ -241,7 +244,7 @@ function proj_end() {
                 <li  class="timeline">
                     <div class="timeline-panel">
                         <div class="timeline-body">
-                            <h3>Making Our Enemies - Date: TBD</h3>
+                            <h3>Making Our Enemies - Date: 10/15</h3>
                             <p>At our third meeting, we'll be adding basic enemies to our game. These basic enemies
                             will be pretty simple in that they won't move or damage our player (yet!), but can take damage and die.
                             We'll also be adding some weapons to our player ship as well.</p>
@@ -252,7 +255,7 @@ function proj_end() {
                 <li  class="timeline-inverted">
                     <div class="timeline-panel">
                         <div class="timeline-body">
-                            <h3>Making Our Enemies Better - Date: TBD</h3>
+                            <h3>Making Our Enemies Better - Date: 10/22</h3>
                             <p>At our fourth meeting, we'll be adding onto the basic enemies from last meeting. This
                             involves adding weapons, movement, and its splitting shape behavior.</p>
                         </div>
@@ -262,9 +265,9 @@ function proj_end() {
                 <li  class="timeline">
                     <div class="timeline-panel">
                         <div class="timeline-body">
-                            <h3>Adding a UI - Date: TBD</h3>
+                            <h3>Adding a UI - Date: 10/29</h3>
                             <p>At our fifth meeting, we'll be adding in a basic user interface to our game. This includes
-                            displaying the player score on the screen, an exit menu, and a basic start screen.</p>
+                            displaying the player score on the screen, an exit menu, health bar, and a basic start screen.</p>
                         </div>
                     </div>
                 </li>
@@ -479,7 +482,7 @@ function proj_end() {
                     <div class="col-xs-6 col-sm-6 col-md-6">
                         <h3>Question or Inquiries?</h3>
                         <p>
-                            Send an email to <a href="mailto:wenjieshi1@uw.edu">Wenjie</a>!
+                            Send an email to <a href="mailto:wenjie1@uw.edu">Wenjie</a>!
                         </p>
                     </div>
                     <div class="col-xs-6 col-sm-6 col-md-6">
