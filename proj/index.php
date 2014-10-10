@@ -185,7 +185,8 @@ function proj_end() {
                             This quarter we'll be learning how to use the Unity Game Engine by making a space shoot'em up game.
                             In this game, you'll control a space shape that'll shoot at enemy shapes which split up into
                             more primitive enemy shapes upon death. We'll be tackling a specific aspect of this game
-                            at each meeting.
+                            at each meeting. If you want to check out the project in its current state, go the the
+                            <a href="https://github.com/BluBambu/SpaceShapes">Github Repo</a>.
                         </p>
                     </div>
                 </div>
